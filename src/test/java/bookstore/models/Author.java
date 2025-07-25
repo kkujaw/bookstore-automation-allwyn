@@ -2,7 +2,7 @@ package bookstore.models;
 
 public class Author {
     private int id;
-    private String idBook;
+    private int idBook;
     private String firstName;
     private String lastName;
 
@@ -14,11 +14,11 @@ public class Author {
         this.id = id;
     }
 
-    public String getIdBook() {
+    public int getIdBook() {
         return idBook;
     }
 
-    public void setIdBook(String idBook) {
+    public void setIdBook(int idBook) {
         this.idBook = idBook;
     }
 
