@@ -104,19 +104,19 @@ public class BooksApiTest extends BaseTest {
         Book existingBook = oldBook.as(Book.class);
 
         // Update Book Details
-        book.put("id", existingBook.id);
+        book.put("id", existingBook.getId());
         book.put("title", updatedTitle);
         book.put("description", updatedDescription);
-        book.put("pageCount", existingBook.pageCount);
-        book.put("excerpt", existingBook.excerpt);
-        book.put("publishDate", existingBook.publishDate);
+        book.put("pageCount", existingBook.getPageCount());
+        book.put("excerpt", existingBook.getExcerpt());
+        book.put("publishDate", existingBook.getPublishDate());
 
         getRequestSpec()
                 .body(book)
-                .put("/Books/" + existingBook.id)
+                .put("/Books/" + existingBook.getId())
                 .then()
                 .statusCode(200)
-                .body("id", is(existingBook.id))
+                .body("id", is(existingBook.getId()))
                 .body("title", is(updatedTitle))
                 .body("description", is(updatedDescription));
     }
@@ -147,7 +147,7 @@ public class BooksApiTest extends BaseTest {
 
         // Delete
         getRequestSpec()
-                .delete("/Books/" + bookToDelete.id)
+                .delete("/Books/" + bookToDelete.getId())
                 .then()
                 .statusCode(200);
     }

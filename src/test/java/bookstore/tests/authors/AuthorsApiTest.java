@@ -99,28 +99,28 @@ public class AuthorsApiTest extends BaseTest {
 
         Author existingAuthor = author.as(Author.class);
         Map<String, Object> update = new HashMap<>();
-        update.put("id", existingAuthor.id);
-        update.put("idBook", existingAuthor.idBook);
+        update.put("id", existingAuthor.getId());
+        update.put("idBook", existingAuthor.getIdBook());
         update.put("firstName", updatedFirstName);
         update.put("lastName", updatedLastName);
         getRequestSpec()
                 .body(update)
-                .put("/Authors/" + existingAuthor.id)
+                .put("/Authors/" + existingAuthor.getId())
                 .then()
                 .statusCode(200)
-                .body("id", is(existingAuthor.id))
-                .body("idBook", is(existingAuthor.idBook))
+                .body("id", is(existingAuthor.getId()))
+                .body("idBook", is(existingAuthor.getIdBook()))
                 .body("firstName", is(updatedFirstName))
                 .body("lastName", is(updatedFirstName));
 
         // Validate that updated author data is correct - GET the author again - simulate bug detection
         getRequestSpec()
-                .get("/Authors/" + existingAuthor.id)
+                .get("/Authors/" + existingAuthor.getId())
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("fakeRestApiSchema.json"))
-                .body("id", is(existingAuthor.id))
-                .body("idBook", is(existingAuthor.idBook))
+                .body("id", is(existingAuthor.getId()))
+                .body("idBook", is(existingAuthor.getIdBook()))
                 .body("firstName", is(updatedFirstName))
                 .body("lastName", is(updatedFirstName));
     }
@@ -150,7 +150,7 @@ public class AuthorsApiTest extends BaseTest {
         Author authorToDelete = createdAuthor.as(Author.class);
 
         getRequestSpec()
-                .delete("/Authors/" + authorToDelete.id)
+                .delete("/Authors/" + authorToDelete.getId())
                 .then()
                 .statusCode(200);
     }
