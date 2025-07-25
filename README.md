@@ -12,10 +12,11 @@ API Automation Testing Assessment: Online Bookstore - Java with RestAssured impl
 ## Technologies
 
 - Java 17
-- RestAssured framework for API testing
-- JUnit 5 (Jupiter) for testing
-- Allure for test reporting
+- [RestAssured](https://github.com/rest-assured/rest-assured) framework for API testing
+- JUnit 5 (Jupiter) for test running and assertions
+- [Allure](https://allurereport.org/) for test reporting
 - Maven for build and dependency management
+- GitHub Actions for CI/CD
 
 ## Writing and Running Tests
 
@@ -55,7 +56,8 @@ On every push or pull request to main:
 - Runs mvn clean verify to build and test
 - Generates Allure report (mvn allure:report)
 - Uploads the Allure report as an artifact (target/allure-test-report) which can be downloaded from the GitHub Actions
-  run summary. To serve the report locally, you can install allure app and then run
+  run summary. To serve the downloaded report locally, you can [install
+  allure](https://allurereport.org/docs/install/) app and then run
   `allure open <path-to-downloaded-allure-report>` after generating
   the report.
 
