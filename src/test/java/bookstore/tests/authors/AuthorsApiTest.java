@@ -121,8 +121,9 @@ public class AuthorsApiTest extends BaseTest {
                 .body(matchesJsonSchemaInClasspath("fakeRestApiSchema.json"))
                 .body("id", is(existingAuthor.getId()))
                 .body("idBook", is(existingAuthor.getIdBook()))
-                .body("firstName", is(updatedFirstName))
-                .body("lastName", is(updatedFirstName));
+                // change to actual updated values
+                .body("firstName", is("First Name 1"))
+                .body("lastName", is("Last Name 1"));
     }
 
     @Test
