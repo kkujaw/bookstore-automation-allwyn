@@ -122,8 +122,8 @@ public class AuthorsApiTest extends BaseTest {
                 .body("id", is(existingAuthor.getId()))
                 .body("idBook", is(existingAuthor.getIdBook()))
                 // change to actual updated values
-                .body("firstName", is("First Name 1"))
-                .body("lastName", is("Last Name 1"));
+                .body("firstName", is(updatedFirstName))
+                .body("lastName", is(updatedFirstName));
     }
 
     @Test
